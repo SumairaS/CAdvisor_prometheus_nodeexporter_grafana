@@ -17,8 +17,8 @@ Steps to Diagnose:
 Check Container Logs:
 Use docker logs <container_id> to check the logs for the cAdvisor container to see if there are any error messages that provide clues.
 
-sh
-Copy code
+ ```sh
+
 docker logs <container_id>
 Verify docker-compose.yml:
 Ensure that your docker-compose.yml file is correctly configured. I have attached an example configuration for cAdvisor in docker-compose.yml
@@ -28,8 +28,8 @@ Ensure that the volume mounts in the docker-compose.yml file are correct and tha
 Inspect Resource Limits:
 Check if there are any resource limits (memory, CPU) that might be causing the container to exit.
 
-sh
-Copy code
+ ```sh
+
 docker inspect <container_id>
 
 Common Issues and Fixes:
@@ -48,15 +48,15 @@ If your system uses cgroup2 and Ubuntu 22.04, like it was in my case, ensure cAd
 Next Steps:
 Check logs and inspect the container:
 
-sh
-Copy code
+ ```sh
+
 docker logs cadvisor
 
 Ensure Correct cgroup Mount Points
 Run the following command to verify the cgroup mount points on your host:
 
-sh
-Copy code
+ ```sh
+
 mount | grep cgroup
 docker inspect cadvisor
 Verify volume mounts and permissions.
@@ -65,6 +65,6 @@ Update docker-compose.yml if necessary.
 
 Restart the cAdvisor container:
 
-sh
-Copy code
+ ```sh
+
 docker-compose up -d cadvisor
